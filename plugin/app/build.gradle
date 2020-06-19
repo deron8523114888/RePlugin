@@ -1,0 +1,50 @@
+apply plugin: 'replugin-plugin-gradle'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileSdkVersion 29
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "com.example.myapplication"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+//repluginPluginConfig {
+//    pluginName = "son"
+//    hostApplicationId = "com.malei.pluginson"  //插件包名
+//    hostAppLauncherActivity = "com.qihoo360.replugin.host"  //宿主包名
+//}
+
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:25.3.1'
+    testImplementation 'junit:junit:4.13'
+
+    implementation 'com.qihoo360.replugin:replugin-plugin-lib:2.2.4'
+}
+
