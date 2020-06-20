@@ -1,27 +1,39 @@
 package com.example.myapplication123
 
 
+import android.app.Activity
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.qihoo360.replugin.RePlugin
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
+        btn_1.setOnClickListener(View.OnClickListener {
+            RePlugin.startActivity(
+                this,
+                RePlugin.createIntent("app-debug", "com.example.myapplication.Main")
+            )
 
-//        RePlugin.preload("son")
-
-//        val info = RePlugin.getPluginInfo("com.example.myapplication")
-//        Log.v("info_",""+info)
+        })
 
 
-        val intent = RePlugin.createIntent("com.example.myapplication", "com.example.myapplication.MainActivity")
-        RePlugin.startActivity(this, intent)
 
+
+
+        btn_2.setOnClickListener(View.OnClickListener {
+            RePlugin.startActivity(
+                this,
+                RePlugin.createIntent("app-debug", "com.example.myapplication.Main2")
+            )
+        })
 
     }
+
 }
